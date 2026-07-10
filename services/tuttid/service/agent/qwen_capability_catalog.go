@@ -2,41 +2,88 @@ package agent
 
 import (
 	"context"
-
-	"github.com/tutti-os/tutti/services/tuttid/biz/agentprovider"
+	"log/slog"
 )
 
 // discoverQwenCodeCapabilityOptions returns the capability options for the
 // Qwen Code provider.
 //
-// Initial scaffolding: the function returns the fallback skill list so the
-// renderer side already shows something meaningful while the real
-// integration lands. The eventual implementation will:
+// Flow (per QwenLM/qwen-code docs/developers/qwen-serve-protocol.md):
 //
-//   - Spawn `qwen serve --token <bearer>` as a managed subprocess
-//     (lifecycle owned by services/tuttid/service/agentstatus/qwen_installer.go).
-//   - GET http://127.0.0.1:4170/capabilities with the bearer header.
-//   - Parse the `caps.features` block (per
-//     QwenLM/qwen-code docs/developers/qwen-serve-protocol.md, the
-//     /capabilities payload is the single source of truth for runtime
-//     feature discovery — see `caps.features.allow_origin` for an example).
-//   - Project each feature into a ComposerCapabilityOption with the
-//     same Kind/Status vocabulary the codex path produces.
+//	1. Probe GET /health — confirms the daemon is up. Loopback /health is
+//	   unauthenticated, so this works even when --require-auth is on.
+//	2. GET /capabilities with the bearer — returns the feature tag array
+//	   plus a small set of structured fields (`workspaceCwd`,
+//	   `modes.permission`, etc.).
+//	3. Project the feature tags into ComposerCapabilityOption rows.
 //
-// Until then, this stub is intentionally side-effect-free: it does not
-// spawn the daemon, does not block on a port check, and returns the
-// fallback list directly so wizard previews stay populated.
+// Each advertised feature tag becomes one ComposerCapabilityOption with
+// Kind="qwen-feature" so the dock can light up the daemon's surface.
+// Unknown / older shapes fall back to the skill list so the UI never goes
+// empty during a daemon upgrade window.
 func discoverQwenCodeCapabilityOptions(
 	ctx context.Context,
 	provider string,
 	cwd string,
 	fallbackSkills []ComposerSkillOption,
 ) ([]ComposerCapabilityOption, []string) {
-	if agentprovider.Normalize(provider) != agentprovider.QwenCode {
+	if !IsQwenProvider(provider) {
 		return composerCapabilityCatalogFromSkills(provider, fallbackSkills), nil
 	}
-	// TODO(qwen): wire up `qwen serve /capabilities` HTTP probe. Track
-	// upstream ACP envelope changes via DAEMON_KNOWN_EVENT_TYPE_VALUES
-	// in QwenLM/qwen-code packages/sdk-typescript/src/daemon/events.ts.
-	return composerCapabilityCatalogFromSkills(provider, fallbackSkills), nil
+
+	fallback := composerCapabilityCatalogFromSkills(provider, fallbackSkills)
+	client := NewQwenDaemonClient()
+
+	if err := client.Health(ctx); err != nil {
+		slog.Warn(
+			"qwen daemon health probe failed; using fallback capability catalog",
+			"provider", provider,
+			"err", err,
+		)
+		return fallback, []string{err.Error()}
+	}
+
+	caps, err := client.Capabilities(ctx)
+	if err != nil {
+		slog.Warn(
+			"qwen daemon capabilities fetch failed; using fallback capability catalog",
+			"provider", provider,
+			"err", err,
+		)
+		return fallback, []string{err.Error()}
+	}
+
+	return projectQwenCapabilitiesToComposerOptions(caps, fallback), nil
+}
+
+// projectQwenCapabilitiesToComposerOptions turns the raw /capabilities
+// payload into the shared ComposerCapabilityOption vocabulary.
+//
+// Today this emits one row per advertised feature tag. Future iterations
+// will fold the modes.permission block and the workspace_mcp* /
+// workspace_skills features into richer typed rows (skill / mcpServer
+// kinds) so the renderer's existing codex-handling can be reused without
+// provider branching.
+func projectQwenCapabilitiesToComposerOptions(
+	caps map[string]any,
+	fallback []ComposerCapabilityOption,
+) []ComposerCapabilityOption {
+	out := append([]ComposerCapabilityOption(nil), fallback...)
+
+	rawFeatures, _ := caps["features"].([]any)
+	for _, raw := range rawFeatures {
+		name, ok := raw.(string)
+		if !ok || name == "" {
+			continue
+		}
+		out = append(out, ComposerCapabilityOption{
+			ID:         "qwen-feature:" + name,
+			Kind:       "qwen-feature",
+			Name:       name,
+			Label:      name,
+			Status:     "available",
+			Invocation: "none",
+		})
+	}
+	return out
 }
