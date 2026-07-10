@@ -17,6 +17,13 @@ const (
 	codexModelErrorCacheTTL = 5 * time.Second
 	opencodeModelCacheTTL   = 6 * time.Hour
 	opencodeModelErrorTTL   = 5 * time.Minute
+	// qwenModelCacheTTL / qwenModelErrorCacheTTL mirror codex's TTL pair
+	// because `qwen serve /capabilities` is similarly cheap to fetch
+	// (small JSON, loopback, no auth on /health). 30s keeps the model
+	// picker feeling live during a session; 5s on failure prevents the
+	// dock from thrashing when the daemon is briefly down.
+	qwenModelCacheTTL      = 30 * time.Second
+	qwenModelErrorCacheTTL = 5 * time.Second
 )
 
 type AgentModelOption struct {
@@ -111,12 +118,33 @@ var agentModelCatalogSpecs = map[string]agentModelCatalogSpec{
 		configuredDefaultModel:    readOpenCodeConfiguredDefaultModel,
 		missingDefaultDescription: "OpenCode configured custom model",
 	},
+	agentprovider.QwenCode: {
+		// `qwen serve` is multi-protocol (OpenAI / Anthropic / Gemini /
+		// Qwen + Ollama / vLLM local) — the model list is whatever the
+		// configured provider exposes, so the source label is generic.
+		source: "qwen-serve",
+		ttl:    qwenModelCacheTTL,
+		errTTL: qwenModelErrorCacheTTL,
+		lister: func(c *CachedAgentModelCatalog) AgentModelLister {
+			if c.QwenCode != nil {
+				return c.QwenCode
+			}
+			return QwenCodeDaemonModelLister{}
+		},
+		configuredDefaultModel:    func() string { return "" },
+		missingDefaultDescription: "Qwen Code configured custom model",
+	},
 }
 
 type CachedAgentModelCatalog struct {
 	Codex             AgentModelLister
 	TuttiAgent        AgentModelLister
 	OpenCode          AgentModelLister
+	// QwenCode is the Qwen Code (`qwen serve` daemon) model lister.
+	// Defaults to QwenCodeDaemonModelLister{} when nil, which reads
+	// QWEN_SERVER_URL / QWEN_SERVER_TOKEN from env. Tests can inject a
+	// fake lister here to drive ListModels without standing up a daemon.
+	QwenCode          AgentModelLister
 	ModelCapabilities ModelCapabilitiesResolver
 	Now               func() time.Time
 
