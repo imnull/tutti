@@ -10,12 +10,14 @@ const (
 	Nexight    = "nexight"
 	OpenClaw   = "openclaw"
 	OpenCode   = "opencode"
+	QwenCode   = "qwen-code"
 	TuttiAgent = "tutti-agent"
 )
 
 var allProviders = []string{
 	ClaudeCode,
 	Codex,
+	QwenCode,
 	TuttiAgent,
 	Cursor,
 	Nexight,
@@ -34,6 +36,8 @@ func Normalize(provider string) string {
 		return ClaudeCode
 	case Codex:
 		return Codex
+	case "qwen", "qwen-cli", "qwen-code-cli", QwenCode:
+		return QwenCode
 	case TuttiAgent:
 		return TuttiAgent
 	case "cursor-agent", "cursor-cli", Cursor:
