@@ -62,7 +62,7 @@ type QwenSessionDiedEvent struct {
 // `session_metadata_updated` frame. Non-terminal; the bridge updates the
 // cached session record.
 type QwenSessionMetadataUpdatedEvent struct {
-	SessionID  string
+	SessionID   string
 	DisplayName string
 }
 
@@ -71,10 +71,10 @@ type QwenSessionMetadataUpdatedEvent struct {
 // user's vote via `POST /session/:id/permissions/vote` (route documented
 // separately in the daemon protocol).
 type QwenPermissionRequestEvent struct {
-	SessionID  string
-	RequestID  string
-	ToolCall   json.RawMessage
-	Options    []json.RawMessage
+	SessionID          string
+	RequestID          string
+	ToolCall           json.RawMessage
+	Options            []json.RawMessage
 	OriginatorClientID string
 }
 
@@ -105,9 +105,9 @@ type QwenModelSwitchFailedEvent struct {
 // (no id); the bridge uses it as a "current state" checkpoint emitted
 // after SSE attach / replay.
 type QwenSnapshotEvent struct {
-	SessionID            string
-	CurrentModelID       string
-	CurrentApprovalMode  string
+	SessionID           string
+	CurrentModelID      string
+	CurrentApprovalMode string
 }
 
 // QwenUnknownEvent surfaces any event type that this translator does
@@ -124,15 +124,15 @@ type QwenUnknownEvent struct {
 // Exactly one of the pointer fields is non-nil. The bridge layer type-
 // switches on this.
 type QwenTranslatedEvent struct {
-	SessionUpdate            *QwenSessionUpdateEvent
-	SessionDied              *QwenSessionDiedEvent
-	SessionMetadataUpdated   *QwenSessionMetadataUpdatedEvent
-	PermissionRequest        *QwenPermissionRequestEvent
-	PermissionResolved       *QwenPermissionResolvedEvent
-	ModelSwitched            *QwenModelSwitchedEvent
-	ModelSwitchFailed        *QwenModelSwitchFailedEvent
-	Snapshot                 *QwenSnapshotEvent
-	Unknown                  *QwenUnknownEvent
+	SessionUpdate          *QwenSessionUpdateEvent
+	SessionDied            *QwenSessionDiedEvent
+	SessionMetadataUpdated *QwenSessionMetadataUpdatedEvent
+	PermissionRequest      *QwenPermissionRequestEvent
+	PermissionResolved     *QwenPermissionResolvedEvent
+	ModelSwitched          *QwenModelSwitchedEvent
+	ModelSwitchFailed      *QwenModelSwitchFailedEvent
+	Snapshot               *QwenSnapshotEvent
+	Unknown                *QwenUnknownEvent
 }
 
 // ErrQwenEventTypeUnknown is returned when the event's `type` field is
@@ -206,11 +206,11 @@ func TranslateQwenEvent(ev QwenDaemonEvent) (QwenTranslatedEvent, error) {
 
 	case "permission_request":
 		var raw struct {
-			SessionID           string          `json:"sessionId"`
-			RequestID           string          `json:"requestId"`
-			ToolCall            json.RawMessage `json:"toolCall"`
-			Options             []json.RawMessage `json:"options"`
-			OriginatorClientID  string          `json:"originatorClientId"`
+			SessionID          string            `json:"sessionId"`
+			RequestID          string            `json:"requestId"`
+			ToolCall           json.RawMessage   `json:"toolCall"`
+			Options            []json.RawMessage `json:"options"`
+			OriginatorClientID string            `json:"originatorClientId"`
 		}
 		if err := json.Unmarshal(ev.Data, &raw); err != nil {
 			return QwenTranslatedEvent{}, fmt.Errorf("decode permission_request: %w", err)
