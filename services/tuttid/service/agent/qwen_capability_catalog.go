@@ -10,12 +10,12 @@ import (
 //
 // Flow (per QwenLM/qwen-code docs/developers/qwen-serve-protocol.md):
 //
-//	1. Probe GET /health — confirms the daemon is up. Loopback /health is
-//	   unauthenticated, so this works even when --require-auth is on.
-//	2. GET /capabilities with the bearer — returns the feature tag array
-//	   plus a small set of structured fields (`workspaceCwd`,
-//	   `modes.permission`, etc.).
-//	3. Project the feature tags into ComposerCapabilityOption rows.
+//  1. Probe GET /health — confirms the daemon is up. Loopback /health is
+//     unauthenticated, so this works even when --require-auth is on.
+//  2. GET /capabilities with the bearer — returns the feature tag array
+//     plus a small set of structured fields (`workspaceCwd`,
+//     `modes.permission`, etc.).
+//  3. Project the feature tags into ComposerCapabilityOption rows.
 //
 // Each advertised feature tag becomes one ComposerCapabilityOption with
 // Kind="qwen-feature" so the dock can light up the daemon's surface.
