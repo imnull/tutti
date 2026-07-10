@@ -191,6 +191,24 @@ func DefaultRegistry() Registry {
 			},
 			LoginArgs: []string{"auth", "login"},
 		},
+		agentprovider.QwenCode: {
+			Provider:    agentprovider.QwenCode,
+			BinaryNames: []string{"qwen"},
+			// Qwen Code (QwenLM/qwen-code, the Alibaba open-source coding
+			// agent) ships its own ACP daemon via `qwen serve` over
+			// HTTP+SSE on 127.0.0.1:4170. Probe uses `qwen --version`
+			// because the bare `qwen` command is an interactive TUI and
+			// fails headless — same shape as codex (app-server) and
+			// cursor (acp). The bearer token for the daemon is generated
+			// per-launch and handed to the renderer via a one-shot env
+			// write so the desktop UI never sees it.
+			AdapterBinaryNames: []string{"qwen"},
+			AdapterCommand:     []string{"qwen", "--version"},
+			AuthStatusCommand:  []string{"auth", "status"},
+			AuthMarkerPaths:    []string{"~/.qwen/auth.json", "~/.config/qwen/auth.json"},
+			Install:            qwenCodeInstallerSpec(),
+			LoginArgs:          []string{"login"},
+		},
 	}
 	providers := agentprovider.All()
 	specs := make([]ProviderSpec, 0, len(providers))
@@ -225,3 +243,6 @@ func tuttiAgentInstallerSpec() InstallerSpec {
 		},
 	}
 }
+
+// qwenCodeInstallerSpec lives in qwen_installer.go alongside the wrapper that
+// invokes it; this line is here only as a compile-time hint for grep.
