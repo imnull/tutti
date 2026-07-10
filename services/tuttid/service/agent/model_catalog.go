@@ -137,9 +137,9 @@ var agentModelCatalogSpecs = map[string]agentModelCatalogSpec{
 }
 
 type CachedAgentModelCatalog struct {
-	Codex             AgentModelLister
-	TuttiAgent        AgentModelLister
-	OpenCode          AgentModelLister
+	Codex      AgentModelLister
+	TuttiAgent AgentModelLister
+	OpenCode   AgentModelLister
 	// QwenCode is the Qwen Code (`qwen serve` daemon) model lister.
 	// Defaults to QwenCodeDaemonModelLister{} when nil, which reads
 	// QWEN_SERVER_URL / QWEN_SERVER_TOKEN from env. Tests can inject a
