@@ -33,10 +33,10 @@ import (
 // event id. Handlers should treat ID=0 as "synthetic, not part of the
 // replay ring".
 type QwenDaemonEvent struct {
-	ID                uint64
-	SchemaVersion     int
-	Type              string
-	Data              json.RawMessage
+	ID                 uint64
+	SchemaVersion      int
+	Type               string
+	Data               json.RawMessage
 	OriginatorClientID string
 }
 
