@@ -153,6 +153,22 @@ var composerProfiles = map[string]composerProfile{
 		DefaultReasoningEffort: "high",
 		Capabilities:           []string{"imageInput", "planMode", "interrupt"},
 	},
+	agentprovider.Qwen: {
+		ModelSelection:          true,
+		LiveModelDiscovery:      true,
+		ReasoningEffort:         true,
+		DefaultReasoningEffort:  "high",
+		Speed:                   true,
+		Capabilities:            []string{"imageInput", "planMode", "interrupt"},
+		PermissionConfigurable:  true,
+		DefaultPermissionModeID: "default",
+		PermissionModes: []PermissionModeOption{
+			{ID: "plan", Semantic: PermissionModeSemanticAskBeforeWrite},
+			{ID: "default", Semantic: PermissionModeSemanticAuto},
+			{ID: "auto-edit", Semantic: PermissionModeSemanticAcceptEdits},
+			{ID: "yolo", Semantic: PermissionModeSemanticFullAccess},
+		},
+	},
 }
 
 // composerProfileFor resolves the provider's composer profile. Unknown

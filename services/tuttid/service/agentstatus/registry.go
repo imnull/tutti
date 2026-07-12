@@ -191,6 +191,18 @@ func DefaultRegistry() Registry {
 			},
 			LoginArgs: []string{"auth", "login"},
 		},
+		agentprovider.Qwen: {
+			Provider:           agentprovider.Qwen,
+			BinaryNames:        []string{"qwen"},
+			AdapterBinaryNames: []string{"qwen"},
+			AdapterCommand:     []string{"qwen", "--acp"},
+			AuthMarkerPaths:    []string{"~/.qwen/settings.json", "~/.qwen/oauth_creds.json"},
+			Install: InstallerSpec{
+				Kind:           InstallerKindShellCommand,
+				DisplayCommand: "npm install -g @qwen-code/qwen-code",
+				ShellCommand:   "npm install -g @qwen-code/qwen-code",
+			},
+		},
 	}
 	providers := agentprovider.All()
 	specs := make([]ProviderSpec, 0, len(providers))

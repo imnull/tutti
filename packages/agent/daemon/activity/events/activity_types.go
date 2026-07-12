@@ -13,6 +13,7 @@ const (
 	ProviderOpenClaw   Provider = "openclaw"
 	ProviderOpenCode   Provider = "opencode"
 	ProviderHermes     Provider = "hermes"
+	ProviderQwen       Provider = "qwen"
 )
 
 type EventType string
@@ -171,6 +172,8 @@ func NormalizeProvider(value string) (Provider, bool) {
 		return ProviderOpenCode, true
 	case string(ProviderHermes), "hermes-agent", "hermes_agent":
 		return ProviderHermes, true
+	case string(ProviderQwen), "qwen-cli", "qwen_cli":
+		return ProviderQwen, true
 	default:
 		return "", false
 	}

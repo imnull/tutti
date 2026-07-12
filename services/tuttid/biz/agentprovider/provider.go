@@ -11,6 +11,7 @@ const (
 	OpenClaw   = "openclaw"
 	OpenCode   = "opencode"
 	TuttiAgent = "tutti-agent"
+	Qwen       = "qwen"
 )
 
 var allProviders = []string{
@@ -22,6 +23,7 @@ var allProviders = []string{
 	Hermes,
 	OpenClaw,
 	OpenCode,
+	Qwen,
 }
 
 func All() []string {
@@ -46,6 +48,8 @@ func Normalize(provider string) string {
 		return OpenClaw
 	case "open-code", "opencode-ai", OpenCode:
 		return OpenCode
+	case "qwen-cli", "tongyi-qwen", Qwen:
+		return Qwen
 	default:
 		return ""
 	}

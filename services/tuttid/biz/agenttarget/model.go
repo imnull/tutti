@@ -17,6 +17,7 @@ const (
 	IDLocalTuttiAgent = "local:tutti-agent"
 	IDLocalCursor     = "local:cursor"
 	IDLocalOpenCode   = "local:opencode"
+	IDLocalQwen       = "local:qwen"
 
 	LaunchRefTypeLocalCLI = "local_cli"
 
@@ -106,6 +107,18 @@ func DefaultSystemTargets(nowUnixMS int64) []Target {
 			Enabled:         true,
 			Source:          SourceSystem,
 			SortOrder:       40,
+			CreatedAtUnixMS: nowUnixMS,
+			UpdatedAtUnixMS: nowUnixMS,
+		},
+		{
+			ID:              IDLocalQwen,
+			Provider:        agentproviderbiz.Qwen,
+			LaunchRefJSON:   MustLocalCLILaunchRefJSON(agentproviderbiz.Qwen),
+			Name:            "Qwen",
+			IconKey:         "qwen",
+			Enabled:         true,
+			Source:          SourceSystem,
+			SortOrder:       50,
 			CreatedAtUnixMS: nowUnixMS,
 			UpdatedAtUnixMS: nowUnixMS,
 		},
@@ -275,6 +288,8 @@ func normalizeFirstIterationProvider(value string) string {
 		return agentproviderbiz.Cursor
 	case agentproviderbiz.OpenCode:
 		return agentproviderbiz.OpenCode
+	case agentproviderbiz.Qwen:
+		return agentproviderbiz.Qwen
 	default:
 		return ""
 	}

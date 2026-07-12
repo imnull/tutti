@@ -4877,6 +4877,7 @@ components:
         - tutti-agent
         - cursor
         - opencode
+        - qwen
     AgentTargetSource:
       type: string
       enum:
@@ -6168,6 +6169,7 @@ components:
         - hermes
         - openclaw
         - opencode
+        - qwen
     WorkspaceAgentSessionStatus:
       type: string
       enum:

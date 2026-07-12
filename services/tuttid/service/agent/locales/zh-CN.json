@@ -65,6 +65,24 @@
         "description": "编辑外部文件或使用互联网前始终询问你",
         "label": "请求批准"
       }
+    },
+    "qwen": {
+      "plan": {
+        "description": "仅分析，不修改文件或执行命令",
+        "label": "仅规划"
+      },
+      "default": {
+        "description": "编辑文件或执行命令前询问你",
+        "label": "请求批准"
+      },
+      "auto-edit": {
+        "description": "自动批准文件编辑；执行命令前询问",
+        "label": "接受编辑"
+      },
+      "yolo": {
+        "description": "自动批准所有工具调用，无需确认",
+        "label": "完全访问"
+      }
     }
   },
   "permissionSemantics": {

@@ -169,7 +169,8 @@ export const tuttiExternalWorkspaceAgentProviders = [
   "cursor",
   "nexight",
   "hermes",
-  "openclaw"
+  "openclaw",
+  "qwen"
 ] as const;
 
 export type TuttiExternalWorkspaceAgentProvider =

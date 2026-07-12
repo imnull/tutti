@@ -65,6 +65,24 @@
         "description": "Always ask to edit external files and use the internet",
         "label": "Ask for approval"
       }
+    },
+    "qwen": {
+      "plan": {
+        "description": "Analyze only — no file modifications or command execution",
+        "label": "Plan only"
+      },
+      "default": {
+        "description": "Ask before file edits or shell commands",
+        "label": "Ask for approval"
+      },
+      "auto-edit": {
+        "description": "Automatically approve file edits; ask for shell commands",
+        "label": "Accept edits"
+      },
+      "yolo": {
+        "description": "Automatically approve all tool calls without confirmation",
+        "label": "Full access"
+      }
     }
   },
   "permissionSemantics": {

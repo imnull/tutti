@@ -162,6 +162,7 @@ func NewDefaultControllerWithOptions(
 		NewHermesAdapterWithHostMetadata(transport, host),
 		NewOpenClawAdapterWithHostMetadata(transport, host),
 		NewOpenCodeAdapterWithHostMetadata(transport, host),
+		NewQwenAdapterWithHostMetadata(transport, host),
 	}
 	setProviderLaunchPreparer(adapters, options.ProviderLaunchPreparer)
 	return NewController(adapters, reporter)
@@ -457,6 +458,8 @@ func defaultPermissionModeIDForProvider(provider string) string {
 		return "agent"
 	case ProviderHermes:
 		return "yolo"
+	case ProviderQwen:
+		return "default"
 	default:
 		return ""
 	}
@@ -500,6 +503,8 @@ func permissionModeIDAllowedForProvider(provider string, mode string) bool {
 		return strings.TrimSpace(mode) == "yolo"
 	case ProviderOpenCode, ProviderOpenClaw:
 		return strings.TrimSpace(mode) == ""
+	case ProviderQwen:
+		return qwenACPModeID(mode) != ""
 	}
 	return false
 }

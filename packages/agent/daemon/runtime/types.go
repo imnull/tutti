@@ -14,6 +14,7 @@ const (
 	ProviderHermes     = "hermes"
 	ProviderOpenClaw   = "openclaw"
 	ProviderOpenCode   = "opencode"
+	ProviderQwen       = "qwen"
 
 	SessionStatusReady     = "ready"
 	SessionStatusWorking   = "working"
