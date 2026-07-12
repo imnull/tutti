@@ -1506,6 +1506,11 @@ export function AgentComposer({
     shouldResetMentionHighlightToFilter
   ]);
 
+  const contextMentionProviderIdsKey = useMemo(
+    () => contextMentionProviders.map((provider) => provider.id).join(","),
+    [contextMentionProviders]
+  );
+
   useEffect(() => {
     const controller = new AgentMentionSearchController({
       contextMentionProviders
@@ -1517,7 +1522,7 @@ export function AgentComposer({
       controller.dispose();
       mentionControllerRef.current = null;
     };
-  }, [contextMentionProviders]);
+  }, [contextMentionProviderIdsKey]);
 
   useEffect(() => {
     const isExternalDraftReplacement = draftPromptRef.current !== draftPrompt;
