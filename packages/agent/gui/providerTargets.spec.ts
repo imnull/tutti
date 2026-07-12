@@ -258,9 +258,9 @@ describe("agent gui provider targets", () => {
       { disabled: false, provider: "cursor" },
       { disabled: false, provider: "tutti-agent" },
       { disabled: false, provider: "opencode" },
-      { disabled: false, provider: "qwen" },
       { disabled: true, provider: "hermes" },
-      { disabled: true, provider: "openclaw" }
+      { disabled: true, provider: "openclaw" },
+      { disabled: false, provider: "qwen" }
     ]);
   });
 
