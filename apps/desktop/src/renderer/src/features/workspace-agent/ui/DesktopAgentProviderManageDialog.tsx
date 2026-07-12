@@ -65,6 +65,7 @@ const providerLabelKeys = {
   nexight: "workspace.workbenchDesktop.agentProviders.manageProviderTutti",
   openclaw: "workspace.workbenchDesktop.agentProviders.manageProviderOpenClaw",
   opencode: "workspace.workbenchDesktop.agentProviders.manageProviderOpenCode",
+  qwen: "workspace.workbenchDesktop.agentProviders.manageProviderQwen",
   "tutti-agent":
     "workspace.workbenchDesktop.agentProviders.manageProviderTuttiAgent"
 } as const satisfies Record<WorkspaceAgentProvider, DesktopI18nKey>;

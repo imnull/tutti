@@ -917,6 +917,7 @@ export const en = {
         manageProviderNexight: "Tutti Agent",
         manageProviderOpenClaw: "OpenClaw",
         manageProviderOpenCode: "Open Code",
+        manageProviderQwen: "Qwen",
         manageProviderTutti: "Tutti",
         manageProviderTuttiAgent: "Tutti Agent",
         manageStatusAuthRequired: "Sign-in required",

@@ -482,6 +482,7 @@ export interface AgentGUIViewLabels {
   conversationFilterCodex: string;
   conversationFilterClaudeCode: string;
   conversationFilterTutti: string;
+  conversationFilterQwen: string;
   providerSwitchLabel: string;
   startConversation: string;
   selectConversation: string;

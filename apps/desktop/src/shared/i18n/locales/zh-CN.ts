@@ -869,6 +869,7 @@ export const zhCN = {
         manageProviderNexight: "Tutti Agent",
         manageProviderOpenClaw: "OpenClaw",
         manageProviderOpenCode: "Open Code",
+        manageProviderQwen: "通义千问",
         manageProviderTutti: "Tutti",
         manageProviderTuttiAgent: "Tutti Agent",
         manageStatusAuthRequired: "需要登录",
