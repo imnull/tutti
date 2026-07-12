@@ -1654,7 +1654,8 @@ describe("AgentGUINodeView layout persistence", () => {
       "Tutti Agent",
       "Open Code",
       "Hermes",
-      "OpenClaw"
+      "OpenClaw",
+      "Qwen"
     ]);
   });
 

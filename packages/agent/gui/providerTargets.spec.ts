@@ -29,7 +29,8 @@ describe("agent gui provider targets", () => {
       "local:tutti-agent",
       "local:opencode",
       "local:hermes",
-      "local:openclaw"
+      "local:openclaw",
+      "local:qwen"
     ]);
     expect(createLocalAgentGUIProviderTarget("cursor")).toMatchObject({
       agentTargetId: "local:cursor",
@@ -257,6 +258,7 @@ describe("agent gui provider targets", () => {
       { disabled: false, provider: "cursor" },
       { disabled: false, provider: "tutti-agent" },
       { disabled: false, provider: "opencode" },
+      { disabled: false, provider: "qwen" },
       { disabled: true, provider: "hermes" },
       { disabled: true, provider: "openclaw" }
     ]);
