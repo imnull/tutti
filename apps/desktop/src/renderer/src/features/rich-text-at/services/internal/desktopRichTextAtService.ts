@@ -1021,6 +1021,8 @@ function normalizeWorkspaceAgentProvider(
       return "tutti-agent";
     case "cursor":
       return "cursor";
+    case "qwen":
+      return "qwen";
     default:
       return null;
   }
