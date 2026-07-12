@@ -382,7 +382,8 @@ export type DesktopDefaultAgentProvider =
   | "claude-code"
   | "codex"
   | "cursor"
-  | "opencode";
+  | "opencode"
+  | "qwen";
 
 export type DesktopAgentDockLayout = "legacySplit" | "unified";
 
@@ -395,6 +396,7 @@ export type DesktopAgentComposerDefaultsByProvider = {
   hermes?: DesktopAgentComposerDefaults;
   openclaw?: DesktopAgentComposerDefaults;
   opencode?: DesktopAgentComposerDefaults;
+  qwen?: DesktopAgentComposerDefaults;
 };
 
 export type DesktopAgentComposerDefaultsByAgentTarget = {
@@ -410,6 +412,7 @@ export type DesktopAgentGuiConversationRailCollapsedByProvider = {
   hermes?: boolean;
   openclaw?: boolean;
   opencode?: boolean;
+  qwen?: boolean;
 };
 
 export type DesktopFileDefaultOpener =

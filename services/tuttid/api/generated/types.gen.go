@@ -709,6 +709,7 @@ const (
 	DesktopDefaultAgentProviderCodex      DesktopDefaultAgentProvider = "codex"
 	DesktopDefaultAgentProviderCursor     DesktopDefaultAgentProvider = "cursor"
 	DesktopDefaultAgentProviderOpencode   DesktopDefaultAgentProvider = "opencode"
+	DesktopDefaultAgentProviderQwen       DesktopDefaultAgentProvider = "qwen"
 )
 
 // Valid indicates whether the value is a known member of the DesktopDefaultAgentProvider enum.
@@ -721,6 +722,8 @@ func (e DesktopDefaultAgentProvider) Valid() bool {
 	case DesktopDefaultAgentProviderCursor:
 		return true
 	case DesktopDefaultAgentProviderOpencode:
+		return true
+	case DesktopDefaultAgentProviderQwen:
 		return true
 	default:
 		return false
@@ -2684,6 +2687,7 @@ type DesktopAgentComposerDefaultsByProvider struct {
 	Nexight    *DesktopAgentComposerDefaults `json:"nexight,omitempty"`
 	Openclaw   *DesktopAgentComposerDefaults `json:"openclaw,omitempty"`
 	Opencode   *DesktopAgentComposerDefaults `json:"opencode,omitempty"`
+	Qwen       *DesktopAgentComposerDefaults `json:"qwen,omitempty"`
 	TuttiAgent *DesktopAgentComposerDefaults `json:"tutti-agent,omitempty"`
 }
 
@@ -2702,6 +2706,7 @@ type DesktopAgentGuiConversationRailCollapsedByProvider struct {
 	Nexight    *bool `json:"nexight,omitempty"`
 	Openclaw   *bool `json:"openclaw,omitempty"`
 	Opencode   *bool `json:"opencode,omitempty"`
+	Qwen       *bool `json:"qwen,omitempty"`
 	TuttiAgent *bool `json:"tutti-agent,omitempty"`
 }
 

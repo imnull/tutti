@@ -4770,6 +4770,7 @@ components:
         - codex
         - cursor
         - opencode
+        - qwen
     DesktopAgentDockLayout:
       type: string
       enum:
@@ -4795,6 +4796,8 @@ components:
           $ref: "#/components/schemas/DesktopAgentComposerDefaults"
         opencode:
           $ref: "#/components/schemas/DesktopAgentComposerDefaults"
+        qwen:
+          $ref: "#/components/schemas/DesktopAgentComposerDefaults"
     DesktopAgentComposerDefaultsByAgentTarget:
       type: object
       additionalProperties:
@@ -4818,6 +4821,8 @@ components:
         openclaw:
           type: boolean
         opencode:
+          type: boolean
+        qwen:
           type: boolean
     DesktopFileDefaultOpener:
       type: string
