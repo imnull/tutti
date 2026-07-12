@@ -2085,8 +2085,8 @@ func TestDaemonAPIGeneratedRoutesListAgentTargets(t *testing.T) {
 
 	var response tuttigenerated.ListAgentTargetsResponse
 	decodeGeneratedRouteResponse(t, recorder, &response)
-	if len(response.Targets) != 5 {
-		t.Fatalf("targets len = %d, want 5", len(response.Targets))
+	if len(response.Targets) != 6 {
+		t.Fatalf("targets len = %d, want 6", len(response.Targets))
 	}
 	if response.Targets[0].Id != agenttargetbiz.IDLocalCodex ||
 		response.Targets[0].Provider != tuttigenerated.AgentTargetProviderCodex ||

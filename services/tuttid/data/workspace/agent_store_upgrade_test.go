@@ -258,13 +258,14 @@ SELECT applied_at_unix_ms FROM agent_store_schema_migrations WHERE id = ?
 	if err != nil {
 		t.Fatalf("ListAgentTargets() error = %v", err)
 	}
-	if len(targets) != 5 ||
+	if len(targets) != 6 ||
 		targets[0].ID != agenttargetbiz.IDLocalCodex ||
 		targets[1].ID != agenttargetbiz.IDLocalClaudeCode ||
 		targets[2].ID != agenttargetbiz.IDLocalTuttiAgent ||
 		targets[3].ID != agenttargetbiz.IDLocalCursor ||
-		targets[4].ID != agenttargetbiz.IDLocalOpenCode {
-		t.Fatalf("targets after upgrade = %#v, want the five system targets", targets)
+		targets[4].ID != agenttargetbiz.IDLocalOpenCode ||
+		targets[5].ID != agenttargetbiz.IDLocalQwen {
+		t.Fatalf("targets after upgrade = %#v, want the six system targets", targets)
 	}
 
 	// Migrate is idempotent after the claim.

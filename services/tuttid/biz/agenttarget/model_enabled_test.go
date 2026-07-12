@@ -13,8 +13,8 @@ func TestEnabledTargetsByProviderPreservesOrderAndCanonicalizes(t *testing.T) {
 	targets = append([]Target{targets[2], targets[0], duplicate}, targets[1:]...)
 
 	enabled := EnabledTargetsByProvider(targets)
-	if len(enabled) != 4 {
-		t.Fatalf("len(enabled) = %d, want 4: %#v", len(enabled), enabled)
+	if len(enabled) != 5 {
+		t.Fatalf("len(enabled) = %d, want 5: %#v", len(enabled), enabled)
 	}
 	if enabled[0].Provider != "tutti-agent" || enabled[1].Provider != "codex" {
 		t.Fatalf("enabled order = %#v", enabled)

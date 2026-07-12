@@ -17,8 +17,8 @@ func TestSQLiteStoreSeedsSystemAgentTargets(t *testing.T) {
 	if err != nil {
 		t.Fatalf("ListAgentTargets() error = %v", err)
 	}
-	if len(targets) != 5 {
-		t.Fatalf("ListAgentTargets() len = %d, want 5", len(targets))
+	if len(targets) != 6 {
+		t.Fatalf("ListAgentTargets() len = %d, want 6", len(targets))
 	}
 	if targets[0].ID != agenttargetbiz.IDLocalCodex || targets[0].Provider != "codex" {
 		t.Fatalf("first target = %#v, want local codex", targets[0])
