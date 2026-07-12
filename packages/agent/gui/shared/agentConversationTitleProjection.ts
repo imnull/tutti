@@ -58,6 +58,9 @@ export function normalizeAgentGUIProviderIdentity(
     case "open-code":
     case "opencode-ai":
       return "opencode";
+    case "qwen":
+    case "qwen-code":
+      return "qwen";
     default:
       return "unknown";
   }

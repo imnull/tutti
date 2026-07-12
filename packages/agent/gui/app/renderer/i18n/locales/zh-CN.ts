@@ -653,6 +653,7 @@ export const zhCN = {
       conversationFilterCodex: "Codex",
       conversationFilterClaudeCode: "Claude Code",
       conversationFilterTutti: "Tutti",
+      conversationFilterQwen: "通义千问",
       providerSwitchLabel: "切换 Provider",
       handoffConversation: "Handoff",
       handoffConversationTooltip: "交接给其他 Agent",
@@ -1711,6 +1712,7 @@ export const zhCN = {
       agentTutti: "Tutti",
       agentHermes: "Hermes",
       agentOpenClaw: "OpenClaw",
+      agentQwen: "通义千问",
       statusNotStarted: "待执行",
       statusRunning: "执行中",
       statusPendingAcceptance: "待验收",
@@ -2286,7 +2288,8 @@ export const zhCN = {
       openclaw: "OpenClaw",
       claudeCode: "Claude",
       codex: "Codex",
-      nexightAgent: "Tutti 智能体"
+      nexightAgent: "Tutti 智能体",
+      qwen: "通义千问"
     },
     dockPopupAgentAvailabilitySectionAria: "{{name}} 的可用性状态",
     nodeDockContextNew: {

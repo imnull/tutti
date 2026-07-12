@@ -70,6 +70,7 @@ export type AgentGUIProvider = Extract<
   | "hermes"
   | "openclaw"
   | "opencode"
+  | "qwen"
 >;
 
 export type AgentGUIAgentAvailabilityStatus =
@@ -277,7 +278,8 @@ export interface RoomIssueNodeData {
     | "nexight"
     | "openclaw"
     | "opencode"
-    | "hermes";
+    | "hermes"
+    | "qwen";
   taskEditing: boolean;
   issueEditing: boolean;
   taskDraft: RoomTaskDraft;

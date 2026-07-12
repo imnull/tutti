@@ -150,7 +150,9 @@ export function toAgentNodeTitle(
               ? "hermes"
               : provider === "cursor"
                 ? "cursor"
-                : "codex";
+                : provider === "qwen"
+                  ? "qwen"
+                  : "codex";
   return `${providerTitle} · ${model ?? translate("common.defaultModel")}`;
 }
 

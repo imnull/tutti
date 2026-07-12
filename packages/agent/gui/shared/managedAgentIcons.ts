@@ -15,7 +15,9 @@ import {
   providerRailCodexColorfulUrl,
   providerRailHermesColorfulUrl,
   providerRailOpenCodeColorfulUrl,
+  providerRailQwenColorfulUrl,
   providerRailTuttiUrl,
+  qwenRoundedUrl,
   tuttiDocRoundedUrl,
   opencodeRoundedUrl,
   openclawRoundedUrl
@@ -29,7 +31,8 @@ export const MANAGED_AGENT_ICON_URLS: Record<string, string> = {
   hermes: manageAgentHermesUrl,
   tutti: manageAgentTuttiUrl,
   openclaw: manageAgentOpenclawUrl,
-  opencode: manageAgentOpenCodeUrl
+  opencode: manageAgentOpenCodeUrl,
+  qwen: qwenRoundedUrl
 };
 
 /** Colorful provider rail icons used by AgentGUI's left provider filter. */
@@ -39,7 +42,8 @@ export const MANAGED_AGENT_PROVIDER_RAIL_ICON_URLS: Record<string, string> = {
   cursor: cursorColorfulUrl,
   hermes: providerRailHermesColorfulUrl,
   tutti: providerRailTuttiUrl,
-  opencode: providerRailOpenCodeColorfulUrl
+  opencode: providerRailOpenCodeColorfulUrl,
+  qwen: providerRailQwenColorfulUrl
 };
 
 /** Rounded avatars for Room status / room activity panel only. */
@@ -50,7 +54,8 @@ export const MANAGED_AGENT_ICON_ROUNDED_URLS: Record<string, string> = {
   hermes: hermesRoundedUrl,
   tutti: tuttiDocRoundedUrl,
   openclaw: openclawRoundedUrl,
-  opencode: opencodeRoundedUrl
+  opencode: opencodeRoundedUrl,
+  qwen: qwenRoundedUrl
 };
 
 /** 与 Manage Agents 列表用的方图区分；房间预览弹幕条等仅用圆图 */

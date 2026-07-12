@@ -2,13 +2,15 @@ import claudeCodeFlatFilledIconUrl from "./app/renderer/assets/icons/agents/clau
 import codexFlatFilledIconUrl from "./app/renderer/assets/icons/agents/codex-flat-filled.svg";
 import cursorFlatFilledIconUrl from "./app/renderer/assets/icons/agents/cursor-flat-filled.svg";
 import opencodeFlatFilledIconUrl from "./app/renderer/assets/icons/agents/opencode-flat-filled.svg";
+import qwenFlatFilledIconUrl from "./app/renderer/assets/icons/agents/qwen-flat-filled.svg";
 import tuttiFlatFilledIconUrl from "./app/renderer/assets/icons/agents/tutti-flat-filled.svg";
 import {
   claudeRoundedUrl,
   codexRoundedUrl,
   cursorColorfulUrl,
   manageAgentTuttiUrl,
-  opencodeRoundedUrl
+  opencodeRoundedUrl,
+  qwenRoundedUrl
 } from "./managedAgentIconAssets";
 import { normalizeManagedAgentProvider } from "./shared/managedAgentProviders";
 
@@ -37,6 +39,8 @@ export function resolveAgentGuiSessionProviderIconUrl(
       return cursorColorfulUrl;
     case "opencode":
       return opencodeRoundedUrl;
+    case "qwen":
+      return qwenRoundedUrl;
     case "tutti":
       return manageAgentTuttiUrl;
     default:
@@ -62,6 +66,8 @@ export function resolveAgentGuiSessionProviderFlatIconUrl(
       return cursorFlatFilledIconUrl;
     case "opencode":
       return opencodeFlatFilledIconUrl;
+    case "qwen":
+      return qwenFlatFilledIconUrl;
     case "tutti":
       return tuttiFlatFilledIconUrl;
     default:

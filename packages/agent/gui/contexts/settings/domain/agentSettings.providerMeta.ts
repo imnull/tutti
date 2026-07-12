@@ -8,7 +8,8 @@ export const AGENT_PROVIDER_LABEL: Record<AgentProvider, string> = {
   nexight: "Nexight",
   opencode: "Open Code",
   openclaw: "OpenClaw",
-  hermes: "Hermes Agent"
+  hermes: "Hermes Agent",
+  qwen: "Qwen"
 };
 
 export interface AgentProviderCapabilities {
@@ -50,6 +51,10 @@ export const AGENT_PROVIDER_CAPABILITIES: Record<
   },
   hermes: {
     runtimeObservation: "jsonl",
+    experimental: false
+  },
+  qwen: {
+    runtimeObservation: "provider-api",
     experimental: false
   }
 };

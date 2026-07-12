@@ -11,7 +11,9 @@ import providerRailClaudeCodeColorfulAssetUrl from "./app/renderer/assets/icons/
 import providerRailCodexColorfulAssetUrl from "./app/renderer/assets/icons/agents/provider-rail-codex-colorful.png";
 import providerRailHermesColorfulAssetUrl from "./app/renderer/assets/icons/agents/provider-rail-hermes-colorful.png";
 import providerRailOpenCodeColorfulAssetUrl from "./app/renderer/assets/icons/agents/provider-rail-opencode-colorful.png";
+import providerRailQwenColorfulAssetUrl from "./app/renderer/assets/icons/agents/provider-rail-qwen-colorful.png";
 import providerRailTuttiAssetUrl from "./app/renderer/assets/icons/agents/provider-rail-tutti.png";
+import qwenRoundedAssetUrl from "./app/renderer/assets/icons/agents/qwen-rounded.png";
 
 export const manageAgentClaudeCodeUrl = claudeRoundedAssetUrl;
 export const manageAgentCodexUrl = codexRoundedAssetUrl;
@@ -37,4 +39,6 @@ export const providerRailCodexColorfulUrl = providerRailCodexColorfulAssetUrl;
 export const providerRailHermesColorfulUrl = providerRailHermesColorfulAssetUrl;
 export const providerRailOpenCodeColorfulUrl =
   providerRailOpenCodeColorfulAssetUrl;
+export const providerRailQwenColorfulUrl = providerRailQwenColorfulAssetUrl;
 export const providerRailTuttiUrl = providerRailTuttiAssetUrl;
+export const qwenRoundedUrl = qwenRoundedAssetUrl;

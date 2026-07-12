@@ -19,5 +19,6 @@ export const agentGuiDockIconUrls = {
   nexight: manageAgentTuttiUrl,
   openclaw: openclawRoundedUrl,
   opencode: opencodeRoundedUrl,
+  qwen: manageAgentTuttiUrl,
   "tutti-agent": tuttiAgentRoundedUrl
 } as const;

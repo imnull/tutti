@@ -5472,6 +5472,9 @@ function agentGUIProviderRailLabel(
   if (provider === "claude-code") {
     return labels.conversationFilterClaudeCode;
   }
+  if (provider === "qwen") {
+    return labels.conversationFilterQwen;
+  }
   return targetLabel;
 }
 

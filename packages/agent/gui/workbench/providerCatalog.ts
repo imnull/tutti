@@ -7,7 +7,8 @@ export const agentGuiWorkbenchProviders = [
   "tutti-agent",
   "opencode",
   "hermes",
-  "openclaw"
+  "openclaw",
+  "qwen"
 ] as const satisfies readonly AgentGuiWorkbenchProvider[];
 
 export const agentGuiWorkbenchDefaultDockProviders = [
@@ -47,6 +48,7 @@ export const agentGuiWorkbenchProviderLabels: Record<
   nexight: "Nexight",
   openclaw: "OpenClaw",
   opencode: "Open Code",
+  qwen: "Qwen",
   "tutti-agent": "Tutti Agent"
 };
 

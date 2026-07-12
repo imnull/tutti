@@ -704,6 +704,7 @@ export const en = {
       conversationFilterCodex: "Codex",
       conversationFilterClaudeCode: "Claude Code",
       conversationFilterTutti: "Tutti",
+      conversationFilterQwen: "Qwen",
       providerSwitchLabel: "Switch provider",
       handoffConversation: "Handoff",
       handoffConversationTooltip: "Hand off to another agent",
@@ -1829,6 +1830,7 @@ export const en = {
       agentTutti: "Tutti",
       agentHermes: "Hermes",
       agentOpenClaw: "OpenClaw",
+      agentQwen: "Qwen",
       statusNotStarted: "To run",
       statusRunning: "Running",
       statusPendingAcceptance: "Pending acceptance",
@@ -2433,7 +2435,8 @@ export const en = {
       openclaw: "OpenClaw",
       claudeCode: "Claude",
       codex: "Codex",
-      nexightAgent: "Tutti Agent"
+      nexightAgent: "Tutti Agent",
+      qwen: "Qwen"
     },
     dockPopupAgentAvailabilitySectionAria: "Availability status for {{name}}",
     nodeDockContextNew: {
