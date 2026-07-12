@@ -1336,6 +1336,7 @@ export const AgentGUINode = memo(function AgentGUINode({
         "agentHost.agentGui.conversationFilterClaudeCode"
       ),
       conversationFilterTutti: t("agentHost.agentGui.conversationFilterTutti"),
+      conversationFilterQwen: t("agentHost.agentGui.conversationFilterQwen"),
       providerSwitchLabel: t("agentHost.agentGui.providerSwitchLabel"),
       startConversation: t("agentHost.agentGui.startConversation"),
       selectConversation: t("agentHost.agentGui.selectConversation"),

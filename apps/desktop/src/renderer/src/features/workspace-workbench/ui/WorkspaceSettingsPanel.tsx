@@ -162,7 +162,8 @@ const workspaceSettingsDefaultAgentProviders = [
   "codex",
   "claude-code",
   "cursor",
-  "opencode"
+  "opencode",
+  "qwen"
 ] as const satisfies readonly DesktopDefaultAgentProvider[];
 
 function isWorkspaceSettingsDefaultAgentProvider(

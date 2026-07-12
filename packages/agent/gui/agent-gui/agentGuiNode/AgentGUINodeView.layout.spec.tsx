@@ -5914,6 +5914,7 @@ function createLabels(): AgentGUIViewLabels {
     conversationFilterCodex: "Codex",
     conversationFilterClaudeCode: "Claude Code",
     conversationFilterTutti: "Tutti",
+    conversationFilterQwen: "Qwen",
     providerSwitchLabel: "Switch provider",
     startConversation: "startConversation",
     selectConversation: "selectConversation",
