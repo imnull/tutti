@@ -421,6 +421,7 @@ const (
 	AgentTargetProviderCodex      AgentTargetProvider = "codex"
 	AgentTargetProviderCursor     AgentTargetProvider = "cursor"
 	AgentTargetProviderOpencode   AgentTargetProvider = "opencode"
+	AgentTargetProviderQwen       AgentTargetProvider = "qwen"
 	AgentTargetProviderTuttiAgent AgentTargetProvider = "tutti-agent"
 )
 
@@ -434,6 +435,8 @@ func (e AgentTargetProvider) Valid() bool {
 	case AgentTargetProviderCursor:
 		return true
 	case AgentTargetProviderOpencode:
+		return true
+	case AgentTargetProviderQwen:
 		return true
 	case AgentTargetProviderTuttiAgent:
 		return true
@@ -1144,6 +1147,7 @@ const (
 	Nexight    WorkspaceAgentProvider = "nexight"
 	Openclaw   WorkspaceAgentProvider = "openclaw"
 	Opencode   WorkspaceAgentProvider = "opencode"
+	Qwen       WorkspaceAgentProvider = "qwen"
 	TuttiAgent WorkspaceAgentProvider = "tutti-agent"
 )
 
@@ -1163,6 +1167,8 @@ func (e WorkspaceAgentProvider) Valid() bool {
 	case Openclaw:
 		return true
 	case Opencode:
+		return true
+	case Qwen:
 		return true
 	case TuttiAgent:
 		return true

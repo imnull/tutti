@@ -176,6 +176,24 @@ export const preferencesDesktopPreferencesSchema = {
               type: "string"
             }
           }
+        },
+        qwen: {
+          type: "object",
+          additionalProperties: false,
+          properties: {
+            model: {
+              type: "string"
+            },
+            permissionModeId: {
+              type: "string"
+            },
+            reasoningEffort: {
+              type: "string"
+            },
+            speed: {
+              type: "string"
+            }
+          }
         }
       }
     },
@@ -227,6 +245,9 @@ export const preferencesDesktopPreferencesSchema = {
         },
         opencode: {
           type: "boolean"
+        },
+        qwen: {
+          type: "boolean"
         }
       }
     },
@@ -248,7 +269,7 @@ export const preferencesDesktopPreferencesSchema = {
     },
     defaultAgentProvider: {
       type: "string",
-      enum: ["claude-code", "codex", "cursor", "opencode"]
+      enum: ["claude-code", "codex", "cursor", "opencode", "qwen"]
     },
     dockIconStyle: {
       type: "string",
@@ -1302,6 +1323,24 @@ export const preferencesDesktopUpdateRequestedPayloadSchema = {
                   type: "string"
                 }
               }
+            },
+            qwen: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                model: {
+                  type: "string"
+                },
+                permissionModeId: {
+                  type: "string"
+                },
+                reasoningEffort: {
+                  type: "string"
+                },
+                speed: {
+                  type: "string"
+                }
+              }
             }
           }
         },
@@ -1353,6 +1392,9 @@ export const preferencesDesktopUpdateRequestedPayloadSchema = {
             },
             opencode: {
               type: "boolean"
+            },
+            qwen: {
+              type: "boolean"
             }
           }
         },
@@ -1374,7 +1416,7 @@ export const preferencesDesktopUpdateRequestedPayloadSchema = {
         },
         defaultAgentProvider: {
           type: "string",
-          enum: ["claude-code", "codex", "cursor", "opencode"]
+          enum: ["claude-code", "codex", "cursor", "opencode", "qwen"]
         },
         dockIconStyle: {
           type: "string",
@@ -1669,6 +1711,24 @@ export const preferencesDesktopUpdatedPayloadSchema = {
                   type: "string"
                 }
               }
+            },
+            qwen: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                model: {
+                  type: "string"
+                },
+                permissionModeId: {
+                  type: "string"
+                },
+                reasoningEffort: {
+                  type: "string"
+                },
+                speed: {
+                  type: "string"
+                }
+              }
             }
           }
         },
@@ -1720,6 +1780,9 @@ export const preferencesDesktopUpdatedPayloadSchema = {
             },
             opencode: {
               type: "boolean"
+            },
+            qwen: {
+              type: "boolean"
             }
           }
         },
@@ -1741,7 +1804,7 @@ export const preferencesDesktopUpdatedPayloadSchema = {
         },
         defaultAgentProvider: {
           type: "string",
-          enum: ["claude-code", "codex", "cursor", "opencode"]
+          enum: ["claude-code", "codex", "cursor", "opencode", "qwen"]
         },
         dockIconStyle: {
           type: "string",
