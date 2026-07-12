@@ -6,7 +6,7 @@ import "encoding/json"
 
 const (
 	BusinessEventProtocolVersion = 1
-	BusinessEventCatalogRevision = "sha256:1b69c706c4d5eca2"
+	BusinessEventCatalogRevision = "sha256:7c5c9b276d8fad4e"
 )
 
 type Topic string
@@ -109,6 +109,12 @@ type PreferencesDesktopPreferences struct {
 			ReasoningEffort  *string `json:"reasoningEffort,omitempty"`
 			Speed            *string `json:"speed,omitempty"`
 		} `json:"opencode,omitempty"`
+		Qwen *struct {
+			Model            *string `json:"model,omitempty"`
+			PermissionModeId *string `json:"permissionModeId,omitempty"`
+			ReasoningEffort  *string `json:"reasoningEffort,omitempty"`
+			Speed            *string `json:"speed,omitempty"`
+		} `json:"qwen,omitempty"`
 	} `json:"agentComposerDefaultsByProvider"`
 	AgentComposerDefaultsByAgentTarget *map[string]struct {
 		Model            *string `json:"model,omitempty"`
@@ -125,6 +131,7 @@ type PreferencesDesktopPreferences struct {
 		Hermes     *bool `json:"hermes,omitempty"`
 		Openclaw   *bool `json:"openclaw,omitempty"`
 		Opencode   *bool `json:"opencode,omitempty"`
+		Qwen       *bool `json:"qwen,omitempty"`
 	} `json:"agentGuiConversationRailCollapsedByProvider"`
 	AgentConversationDetailMode   string            `json:"agentConversationDetailMode"`
 	AgentDockLayout               string            `json:"agentDockLayout"`

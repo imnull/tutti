@@ -444,7 +444,8 @@ export type AgentTargetProvider =
   | "claude-code"
   | "tutti-agent"
   | "cursor"
-  | "opencode";
+  | "opencode"
+  | "qwen";
 
 export type AgentTargetSource = "system" | "user";
 
@@ -951,7 +952,8 @@ export type WorkspaceAgentProvider =
   | "nexight"
   | "hermes"
   | "openclaw"
-  | "opencode";
+  | "opencode"
+  | "qwen";
 
 export type WorkspaceAgentSessionStatus =
   | "created"

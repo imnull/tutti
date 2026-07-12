@@ -90,6 +90,12 @@ export interface PreferencesDesktopPreferencesV1 {
       reasoningEffort?: string;
       speed?: string;
     };
+    qwen?: {
+      model?: string;
+      permissionModeId?: string;
+      reasoningEffort?: string;
+      speed?: string;
+    };
   };
   agentComposerDefaultsByAgentTarget?: Record<
     string,
@@ -109,12 +115,18 @@ export interface PreferencesDesktopPreferencesV1 {
     hermes?: boolean;
     openclaw?: boolean;
     opencode?: boolean;
+    qwen?: boolean;
   };
   agentConversationDetailMode: "coding" | "general";
   agentDockLayout: "legacySplit" | "unified";
   appCatalogChannel: "production" | "staging";
   browserUseConnectionMode?: "isolated" | "autoConnect";
-  defaultAgentProvider: "claude-code" | "codex" | "cursor" | "opencode";
+  defaultAgentProvider:
+    | "claude-code"
+    | "codex"
+    | "cursor"
+    | "opencode"
+    | "qwen";
   dockIconStyle: "default" | "flat";
   dockPlacement: "bottom" | "left";
   fileDefaultOpenersByExtension: Record<
